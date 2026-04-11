@@ -12,7 +12,6 @@ permissions:
 
 jobs:
   build:
-    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
 
     steps:
@@ -34,20 +33,16 @@ jobs:
       - name: Verify dist output
         run: test -f dist/web-filter.js
 
-      - name: Commit and push dist
+      - name: Prepare release asset
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- dist/web-filter.js; then
-            echo "No dist changes to commit"
-            exit 0
-          fi
-          git add dist/web-filter.js
-          git commit -m "chore: update dist [skip ci]"
-          git push origin HEAD:${{ github.ref_name }}
+          cp dist/web-filter.js dist/web-filter-mini.js
 
-      - name: Upload dist artifact
-        uses: actions/upload-artifact@v4
+      - name: Publish to GitHub Release
+        uses: ncipollo/release-action@v1
         with:
-          name: dist-web-filter
-          path: dist/web-filter.js
+          tag: auto-build
+          name: Auto Build
+          body: Auto-generated build from ${{ github.sha }}
+          artifacts: dist/web-filter-mini.js
+          allowUpdates: true
+          replacesArtifacts: true
