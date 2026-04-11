@@ -134,7 +134,6 @@ function createWebFilter() {
     }
     // 开始 send
     XMLHttpRequest.prototype.send = function (body) {
-        //console.log('send', body);
         this[metaFieldName].body = body;
         if (filterOptions.onRequest && typeof filterOptions.onRequest === 'function') {
             var options = this[metaFieldName];
@@ -173,7 +172,6 @@ function createWebFilter() {
                 // 当 readyState == 4 时，表示请求已完成
                 if (this.readyState === 4) {
                     var options = this[metaFieldName];
-                    //console.log('XHR onResponse options', this.getAllResponseHeaders());
                     var headers = parseXhrHeadersToNative(this.getAllResponseHeaders());
                     var response = filterOptions.onResponse(options, {
                         status: this.status,
@@ -222,7 +220,6 @@ function createWebFilter() {
         var getter = descriptor && descriptor.get;
         if (getter) {
             descriptor.get = function () {
-                console.log('Response get', field);
                 let meta = this[metaFieldName] || {};
                 if (meta.respond && meta.respond[field] !== undefined) {
                     return meta.respond[field];
@@ -282,7 +279,6 @@ function createWebFilter() {
             }
         }
         return $fetch.apply(this, [options.url, init]).then(function (response) {
-            console.log('fetch response', response);
             if (filterOptions.onResponse && typeof filterOptions.onResponse === 'function') {
                 var options = hookOptions;
                 var status = response.status;
@@ -323,7 +319,6 @@ function createWebFilter() {
     var $createElement = document.createElement;
     document.createElement = function createElement(tagName) {
         var element = $createElement.call(this, tagName);
-        //console.log('createElement', tagName, element.tagName);
         if (element.tagName.toLocaleUpperCase() === "SCRIPT") {
             var hookOptions = { method: "script" };
             if (filterOptions.onCreate && typeof filterOptions.onCreate === 'function') {
