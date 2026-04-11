@@ -163,6 +163,7 @@ npm test
 - 该库通过重写全局对象实现拦截（`XMLHttpRequest`、`fetch`、`HTMLScriptElement.src`），建议尽早初始化。
 - JSONP 场景需要正确识别 callback 参数，demo 中在 `onOpen` 设置了 `options.callback`。
 - 当前仓库测试文件与源码 API 命名存在历史差异，文档以源码实现为准。
+- 该项目仅用于学习测试，请勿用于非法用途。
 
 ## 许可证
 

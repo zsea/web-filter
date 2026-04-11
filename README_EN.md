@@ -157,6 +157,7 @@ npm test
 - This library intercepts by patching global browser APIs (`XMLHttpRequest`, `fetch`, and `HTMLScriptElement.src`), so initialize it early.
 - For JSONP, callback handling must match your query parameter and hook logic.
 - Tests in this repository include legacy naming differences; docs follow current source behavior.
+- This project is for learning and testing purposes only. Do not use it for illegal activities.
 
 ## License
 
