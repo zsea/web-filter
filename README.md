@@ -173,3 +173,7 @@ npm test
 ## 许可证
 
 MIT
+
+## 参考资料
+
+* [你以为你请求的就是你想请求的吗？](https://www.lsz.sc.cn/posts/page/2/)

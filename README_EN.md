@@ -14,6 +14,7 @@ A lightweight browser request interceptor for Fetch, XMLHttpRequest, and JSONP (
 - [Build and Test](#build-and-test)
 - [Notes](#notes)
 - [License](#license)
+- [References](#references)
 
 ## Features
 
@@ -167,3 +168,7 @@ npm test
 ## License
 
 MIT
+
+## References
+
+* [你以为你请求的就是你想请求的吗？](https://www.lsz.sc.cn/posts/page/2/)
