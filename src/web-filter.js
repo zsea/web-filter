@@ -421,8 +421,9 @@ function createWebFilter() {
                 let meta = this[metaFieldName] || {};
                 meta.url = arguments[1];
                 scriptOnOpen.apply(this, [meta]);
+                return $setAttribute.apply(this, [arguments[0], meta.url]);
             }
-            return $setAttribute.apply(this, [arguments[0], meta.url]);
+            return $setAttribute.apply(this, arguments);
         }
     })();
 
