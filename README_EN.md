@@ -83,7 +83,12 @@ Triggered after URL/method initialization. You can mutate `options` directly.
 Triggered before request dispatch. Return an action object to control flow.
 
 - `onResponse(options, response)`
-Triggered after response is available. You can continue, block, or replace response.
+Triggered after response is available. You can continue, block, or replace response. The `response` object includes the following fields:
+
+  * headers
+  * status
+  * text
+  * url
 
 ## Action Contract
 

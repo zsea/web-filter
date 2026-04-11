@@ -176,7 +176,8 @@ function createWebFilter() {
                     var response = filterOptions.onResponse(options, {
                         status: this.status,
                         text: this.responseText,
-                        headers: headers
+                        headers: headers,
+                        url: this.responseURL
                     });
                     if (response) {
                         if (response.action === "block") {
@@ -284,7 +285,7 @@ function createWebFilter() {
                 var status = response.status;
 
                 return response.text().then(function (text) {
-                    var res = filterOptions.onResponse(options, { status: status, text: text, headers: response.headers }) || { action: "continue" };
+                    var res = filterOptions.onResponse(options, { status: status, text: text, headers: response.headers,url: response.url }) || { action: "continue" };
                     if (res.action === "block") {
                         return Promise.reject(new BlockedRequestError());
                     }

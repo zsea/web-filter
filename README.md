@@ -87,7 +87,12 @@ useFilter({
 请求发出前触发，可返回动作控制结果。
 
 - `onResponse(options, response)`
-收到响应后触发，可继续放行、阻断或改写响应。
+收到响应后触发，可继续放行、阻断或改写响应。其中，```response```数据包括以下字段：
+
+    * headers
+    * status
+    * text
+    * url
 
 ## Action 协议
 

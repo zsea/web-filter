@@ -41,7 +41,7 @@ if (false) {
 
     console.log('xhr', xhr.hookOptions);
 }
-if (false) {
+if (true) {
     fetch('./demon.json').then(function (response) {
         console.log('demo fetch response', response);
         return response.json();
@@ -49,7 +49,7 @@ if (false) {
         console.log('demo fetch response text', text);
     });
 }
-if (false) {
+if (true) {
     window.callback_test = function (data) {
         console.log("jsonp callback_test", data);
     }
