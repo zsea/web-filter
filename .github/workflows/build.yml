@@ -7,8 +7,12 @@ on:
       - master
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
 
     steps:
@@ -29,6 +33,18 @@ jobs:
 
       - name: Verify dist output
         run: test -f dist/web-filter.js
+
+      - name: Commit and push dist
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- dist/web-filter.js; then
+            echo "No dist changes to commit"
+            exit 0
+          fi
+          git add dist/web-filter.js
+          git commit -m "chore: update dist [skip ci]"
+          git push origin HEAD:${{ github.ref_name }}
 
       - name: Upload dist artifact
         uses: actions/upload-artifact@v4
