@@ -1,6 +1,6 @@
 {
   "name": "web-filter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Intercept and modify fetch, XMLHttpRequest and JSONP in browser.",
   "type": "module",
   "main": "src/web-filter.js",
